@@ -1,5 +1,5 @@
 /*
-	Daniel Finestrat Martinez, 48719584H.
+	Daniel Finestrat Martinez, 2016.
 	Vamos a pasar de hacer 1 operacion con CPU a 25600 o más al mismo tiempo con GPU
 	
 	Para cambiar el tamanyo del vector cambiar kNumElements
