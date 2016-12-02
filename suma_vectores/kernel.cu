@@ -1,5 +1,5 @@
 /*
-	Daniel Finestrat Martinez, 2016.
+	Daniel Finestrat Martinez, 48719584H.
 	Vamos a pasar de hacer 1 operacion con CPU a 25600 o más al mismo tiempo con GPU
 	
 	Para cambiar el tamanyo del vector cambiar kNumElements
@@ -39,7 +39,7 @@ __global__ void kernel_suma_vectores(const float * cpA, const float * cpB, float
 int main(){
 
 	LARGE_INTEGER t_ini, t_fin;	//Tiempo inicial y final de Proceso
-	double secsH, secsD; //Tiempo de operacion
+	double secsH; //Tiempo de operacion
 
 	//PASO 1: INICIALIZACION
 	cudaSetDevice(0); //Llamamos a cualquier variable del kernel para inicializar, esta nos dice q usemos la GPU 0
@@ -50,6 +50,8 @@ int main(){
 
 	const int maxThreadsPerBlock = 1024; //Ajustar esta cifra segun tu GPU
 	const int maxBlocksPerGrid = 65535; //Ajustar esta cifra segun tu GPU
+
+
 
 	const int kNumElements = 90000000; //Apuntamos numero de elementos de cada vector que sumaremos (ej. 25600)
 	size_t vector_size_bytes = kNumElements * sizeof(float); //Obtenemos cantidad de memoria necesaria para un vector del numero de elementos definido, siendo variables float
@@ -95,10 +97,7 @@ int main(){
 	dim3 block(threadsPerBlock, 1, 1); //Definimos los bloques, x sera los hilos que contiene cada bloque
 	dim3 grid(blocksPerGrid, 1, 1); //Definimos la grid con 3 variables, x sera los bloques que contiene cada grid
 	
-	QueryPerformanceCounter(&t_ini);
 	kernel_suma_vectores<<<grid, block>>> (d_A_, d_B_, d_C_, kNumElements); //Invocacion de kernel. Le pasamos variables de DISPOSITIVO (GPU)
-	QueryPerformanceCounter(&t_fin);
-	secsD = performancecounter_diff(&t_fin, &t_ini);
 
 	//Comprobamos si tenemos errores
 	cudaError_t err_ = cudaGetLastError();
@@ -132,7 +131,7 @@ int main(){
 	printf("Hemos sumado vectores de %d posiciones, usando bloques de %d hilos (el maximo permitido por nuestra grafica)", kNumElements, threadsPerBlock);
 	printf(" y grids de %d bloques (el tamanyo maximo de grid de nuestra grafica es de %d bloques), por lo tanto cada thread", blocksPerGrid, maxBlocksPerGrid);
 	printf(" realizara un maximo de %d operacion(es).", numOperacionesPorThread);
-	printf("\n\nSe tardaron %f segundos en ejecutar la operacion en el Host y %f en hacerla en el Device", secsH, secsD);
+	printf("\n\nSe tardaron %f segundos en ejecutar la operacion en el Host", secsH);
 	getchar();
 
 	return 0;
