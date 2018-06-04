@@ -4,3 +4,5 @@ El programa está preparado para funcionar con una GPU nVidia 960. Si tu GPU no 
 Una vez ejecutes el programa, éste te dirá el tiempo que ha tardado en ejecutar las operaciones desde la CPU y la GPU, demostrando así que realizarlas en la GPU es inmensamente más rápido.
 
 Este programa es parte de una práctica realizada en la asignatura Dispositivos e Infraestructuras para Sistemas Multimedia, del tercer curso de Ingeniería Multimedia en la Universidad de Alicante (2016).
+
+[Daniel Finestrat Martínez, 2016.](http://danielfinestrat.com)
