@@ -5,4 +5,4 @@ Una vez ejecutes el programa, éste te dirá el tiempo que ha tardado en ejecuta
 
 Este programa es parte de una práctica realizada en la asignatura Dispositivos e Infraestructuras para Sistemas Multimedia, del tercer curso de Ingeniería Multimedia en la Universidad de Alicante (2016).
 
-[Daniel Finestrat Martínez, 2016.](http://danielfinestrat.com)
+2016.
